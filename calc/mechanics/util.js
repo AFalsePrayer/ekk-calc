@@ -656,7 +656,7 @@ function handleFixedDamageMoves(attacker, move) {
     else if (move.named('Dragon Rage')) {
         return 40;
     }
-    else if (move.named('Sonic Boom', 'Sonicboom')) {
+    else if (move.named('Sonic Boom', 'Sonic Boom')) {
         return 20;
     }
     return 0;
