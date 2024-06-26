@@ -213,7 +213,7 @@ $(".result-move").change(function () {
 			var desc = result.fullDesc(notation, false);
 			if (desc.indexOf('--') === -1) desc += ' -- possibly the worst move ever';
 			$("#mainResult").text(desc);
-			$("#damageValues").text("Possible damage amounts: (" + displayDamageHits(result.damage) + ")");
+			$("#damageValues").text("Rolls: (" + displayDamageHits(result.damage) + ")");
 		}
 	}
 });
@@ -222,7 +222,30 @@ function displayDamageHits(damage) {
 	// Fixed Damage
 	if (typeof damage === 'number') return damage;
 	// Standard Damage
-	if (damage.length > 2) return damage.join(', ');
+	if (damage.length > 2) {
+		var resultString = "";
+		var prevDamage = damage[0]
+		var rollCount = 1;
+		resultString += damage[0];
+		for(var i = 1; i < damage.length; i++){
+			if(damage[i] == prevDamage){
+				rollCount++;
+			}
+			else{
+				resultString += rollCount > 1 ? " [x"+ rollCount+"], " + damage[i] : ", " + damage[i];
+				rollCount = 1;
+				prevDamage = damage[i]
+			}
+		}
+		if(rollCount > 1){
+			resultString += " [x"+ rollCount+"])";
+		}
+		else{
+			resultString += ")"
+		}
+		
+		return resultString;
+	};
 	// Fixed Parental Bond Damage
 	if (typeof damage[0] === 'number' && typeof damage[1] === 'number') {
 		return '1st Hit: ' + damage[0] + '; 2nd Hit: ' + damage[1];
@@ -265,6 +288,15 @@ function calculateAllMoves(gen, p1, p1field, p2, p2field) {
 		results[1][i] = calc.calculate(gen, p2, p1, p2.moves[i], p2field);
 	}
 	return results;
+}
+
+function saveTrigger(ev) {
+	var isUser = ev.originalEvent ? ev.originalEvent.isTrusted : false;
+	console.log("yippee2")
+	if (isUser || ev.added) { //ev.added is for the moves buttons
+		console.log("yippee")
+		$('#save-change').attr("hidden", false);
+	}
 }
 
 $(".mode").change(function () {
@@ -324,6 +356,9 @@ $(document).ready(function () {
 		}
 		performCalculations();
 	});
+
+	
+	$(".save-trigger").bind("change keyup", saveTrigger);
 
 	$(".bait-trigger").bind("change keyup", function (ev) {
 		if (window.NO_CALC) {
