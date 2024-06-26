@@ -193,7 +193,6 @@ var RBY = {
     'Ice Punch': { bp: 75, type: 'Ice' },
     'Mega Kick': { bp: 120, type: 'Normal' },
     'Mega Punch': { bp: 80, type: 'Normal' },
-    'Paleo Wave': { bp: 85, type: 'Rock' },
     'Pay Day': { bp: 40, type: 'Normal' },
     Peck: { bp: 35, type: 'Flying' },
     Pound: { bp: 40, type: 'Normal' },
