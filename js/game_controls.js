@@ -27,6 +27,7 @@ $(".game").change(function() {
     setdex = !isHack ? CUSTOMSETDEX[gameId] : CUSTOMHACKSETDEX[gameId];
 	partyOrder = CUSTOMHACKPARTYORDER[1];
 	trainerNames = !isHack ? CUSTOMTRAINERNAMES[gameId] : CUSTOMHACKTRAINERNAMES[gameId];
+	trainerSprites = CUSTOMHACKTRAINERSPRITES_EK;
 	flags = !isHack ? CUSTOMFLAGS[gameId] : CUSTOMHACKFLAGS[gameId];
     if (typeof setdex === 'undefined') setdex = SETDEX[generation];
     clearField();
@@ -162,7 +163,12 @@ var HACKGEN = {
 
 var CUSTOMHACKTRAINERNAMES = [
 	undefined,
-	typeof CUSTOMHACKTRAINERNAMES_EKK === 'undefined' ? {} : CUSTOMHACKTRAINERNAMES_EKK
+	typeof CUSTOMHACKTRAINERNAMES_EK === 'undefined' ? {} : CUSTOMHACKTRAINERNAMES_EK
+];
+
+var CUSTOMHACKTRAINERSPRITES = [
+	undefined,
+	typeof CUSTOMHACKTRAINERSPRITES_EK === 'undefined' ? {} : CUSTOMHACKTRAINERSPRITES_EK
 ];
 
 var CUSTOMHACKPARTYORDER = [
@@ -541,6 +547,14 @@ function predictSwitchOrderEmerald() {
 			$(`.trainer-poke-switch-explain[data-id='${dead.setName}']`).html(`${nextMon} (Phase ${phase})`);
 			// $(`.trainer-poke-switch-explain[data-id='${dead.setName}']`).html(``);
 			$(`.trainer-poke-switch-xp[data-id='${dead.setName}']`).html(`+${xp}`);
+			
+			// var newPoke = document.createElement("img");
+			// newPoke.className = "trainer-poke-switched right-side";
+			// newPoke.src = `https://raw.githubusercontent.com/May8th1995/sprites/master/${nextMon}.png`;
+			// newPoke.title = `${phase}`;
+			// $(`.trainer-poke-switch-explain[data-id='${dead.setName}']`).html("");
+			// $(`.trainer-poke-switch-explain[data-id='${dead.setName}']`).append(newPoke)
+			// $(`.trainer-poke-switch-xp[data-id='${dead.setName}']`).html(`+${xp}`);
 		}
 	}
 }
