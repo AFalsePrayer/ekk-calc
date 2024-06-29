@@ -2779,7 +2779,7 @@ var EK_PATCH = {
     Kingler: { expYield: 206 },
     Koffing: { expYield: 114 },
     Krabby: { expYield: 115 },
-    Lapras: { abilities: { 0: 'Shell Armor' }, bs: { sa: 115, sd: 105 }, expYield: 219 },
+    Lapras: { abilities: { 0: 'Shell Armor' }, bs: { sa: 95, sd: 105 }, expYield: 219 },
     Lickitung: { expYield: 127 },
     Machamp: { expYield: 193 },
     Machoke: { expYield: 146 },
@@ -2854,7 +2854,7 @@ var EK_PATCH = {
     Victreebel: { bs: { sd: 70 }, expYield: 191 },
     Vileplume: { bs: { sa: 110 }, expYield: 184 },
     Voltorb: { expYield: 103 },
-    Vulpix: { abilities: { 0: 'Pressure' }, bs: { sa: 80 }, expYield: 63 },
+    Vulpix: { abilities: { 0: 'Pressure' }, bs: { sa: 65 }, expYield: 63 },
     Wartortle: { expYield: 143 },
     Weedle: { expYield: 52 },
     Weepinbell: { expYield: 151 },
@@ -2913,7 +2913,7 @@ var EK_PATCH = {
     Meganium: { expYield: 208 },
     Miltank: { expYield: 200 },
     Misdreavus: { bs: { sa: 105, sd: 105, sp: 105 }, expYield: 147 },
-    Murkrow: { expYield: 107, bs: { hp: 100, at: 125, df: 52, sa: 105, sd: 52, sp: 91 } },
+    Murkrow: { expYield: 107 },
     Natu: { expYield: 73 },
     Noctowl: { bs: { sa: 86 }, expYield: 162 },
     Octillery: { expYield: 164 },
@@ -2938,7 +2938,7 @@ var EK_PATCH = {
     Slugma: { expYield: 78 },
     Smeargle: { bs: { hp: 60, at: 60, df: 70, sa: 60, sd: 70 }, expYield: 106 },
     Smoochum: { expYield: 87 },
-    Sneasel: { expYield: 132, bs: { hp: 70, at: 120, df: 64, sa: 45, sd: 85, sp: 125 } },
+    Sneasel: { expYield: 132 },
     Snubbull: { expYield: 63 },
     Spinarak: { expYield: 54 },
     Stantler: { expYield: 165 },
@@ -2953,7 +2953,7 @@ var EK_PATCH = {
     Togetic: { expYield: 114 },
     Totodile: { expYield: 66 },
     Typhlosion: { expYield: 209 },
-    Tyranitar: { abilities: { 0: 'Guts' }, expYield: 218, bs: { sd: 110 } },
+    Tyranitar: { abilities: { 0: 'Guts' }, expYield: 218 },
     Tyrogue: { expYield: 91 },
     Umbreon: { expYield: 197 },
     Unown: { expYield: 61 },
@@ -3058,7 +3058,7 @@ var EK_PATCH = {
     Registeel: { bs: { hp: 100 }, expYield: 215 },
     Relicanth: { expYield: 198 },
     Roselia: { expYield: 152 },
-    Sableye: { bs: { hp: 95, at: 125, df: 125, sa: 105, sd: 115, sp: 20 }, expYield: 98 },
+    Sableye: { bs: { hp: 95, at: 125, df: 125, sd: 115, sp: 20 }, expYield: 98 },
     Salamence: { expYield: 218 },
     Sceptile: { expYield: 208 },
     Sealeo: { expYield: 128 },
@@ -3105,6 +3105,15 @@ var EK_PATCH = {
     Zigzagoon: { expYield: 60 }
 };
 var EK = (0, util_1.extend)(true, {}, ADV, EK_PATCH);
+var EKK_PATCH = {
+    Lapras: { bs: { sa: 115 } },
+    Vulpix: { bs: { sa: 80 } },
+    Murkrow: { bs: { hp: 100, at: 125, df: 52, sa: 105, sd: 52, sp: 91 } },
+    Sneasel: { bs: { hp: 70, at: 120, df: 64, sa: 45, sd: 85, sp: 125 } },
+    Tyranitar: { bs: { sd: 110 } },
+    Sableye: { bs: { sa: 105 } }
+};
+var EKK = (0, util_1.extend)(true, {}, EK, EKK_PATCH);
 var DPP_PATCH = {
     Aipom: { nfe: true },
     Dusclops: { nfe: true },
@@ -10423,7 +10432,7 @@ var SV_PATCH = {
 };
 var SV = (0, util_1.extend)(true, {}, SS, SV_PATCH, PLA_PATCH);
 exports.SPECIES = [{}, RBY, GSC, ADV, DPP, BW, XY, SM, SS, SV];
-exports.HACK_SPECIES = [{}, EK];
+exports.HACK_SPECIES = [{}, EK, EKK];
 var Species = (function () {
     function Species(gen) {
         this.gen = gen;

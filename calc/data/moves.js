@@ -193,6 +193,7 @@ var RBY = {
     'Ice Punch': { bp: 75, type: 'Ice' },
     'Mega Kick': { bp: 120, type: 'Normal' },
     'Mega Punch': { bp: 80, type: 'Normal' },
+    'Paleo Wave': { bp: 85, type: 'Rock' },
     'Pay Day': { bp: 40, type: 'Normal' },
     Peck: { bp: 35, type: 'Flying' },
     Pound: { bp: 40, type: 'Normal' },
@@ -275,7 +276,7 @@ var GSC_PATCH = {
     'Ancient Power': { bp: 60, type: 'Rock' },
     'Bone Rush': { bp: 25, type: 'Ground', multihit: [2, 5] },
     Crunch: { bp: 80, type: 'Dark' },
-    'Faint Attack': { bp: 60, type: 'Dark' },
+    'Feint Attack': { bp: 60, type: 'Dark' },
     'Giga Drain': { bp: 60, type: 'Grass', drain: [1, 2] },
     'Hidden Power': { bp: 0, type: 'Normal' },
     'Mean Look': { bp: 0, category: 'Status', type: 'Normal' },
@@ -562,6 +563,8 @@ var ADV_PATCH = {
 var ADV = (0, util_1.extend)(true, {}, GSC, ADV_PATCH);
 var EK_PATCH = {
     Crabhammer: { bp: 120 },
+    Return: { bp: 103 },
+    Frustration: { bp: 103 },
     'Dizzy Punch': { bp: 90 },
     'Glare': { type: 'Dark' },
     'High Jump Kick': { bp: 85, type: 'Fighting', hasCrashDamage: true, makesContact: true },
@@ -573,7 +576,7 @@ var EK_PATCH = {
     'Egg Bomb': { bp: 120, type: 'Grass', recoil: [1, 3] },
     Aeroblast: { bp: 120 },
     'Ancient Power': { bp: 80, type: 'Rock' },
-    'Faint Attack': { bp: 60, type: 'Dark' },
+    'Feint Attack': { bp: 60, type: 'Dark' },
     'Giga Drain': { bp: 75 },
     'Rock Smash': { bp: 40 },
     'Extreme Speed': { bp: 100 },
@@ -773,7 +776,7 @@ var DPP_PATCH = {
     'Dizzy Punch': { isPunch: true, category: 'Physical' },
     'Dragon Rage': { category: 'Special' },
     'Egg Bomb': { category: 'Physical' },
-    'Faint Attack': { makesContact: true, category: 'Physical' },
+    'Feint Attack': { makesContact: true, category: 'Physical' },
     Frustration: { category: 'Physical' },
     'Hyper Fang': { isBite: true, category: 'Physical' },
     'Karate Chop': { category: 'Physical' },
@@ -2060,7 +2063,7 @@ var SM_PATCH = {
     'Dragon Ascent': { zp: 190 },
     'Dragon Rage': { zp: 100 },
     'Egg Bomb': { zp: 180 },
-    'Faint Attack': { zp: 120 },
+    'Feint Attack': { zp: 120 },
     'Fiery Dance': { zp: 160 },
     'Flame Burst': { zp: 140 },
     Frustration: { zp: 160 },
@@ -3835,7 +3838,7 @@ var SS_PATCH = {
     'Fake Out': { maxPower: 90 },
     'False Swipe': { maxPower: 90 },
     Feint: { maxPower: 90 },
-    'Faint Attack': { maxPower: 110 },
+    'Feint Attack': { maxPower: 110 },
     'Fell Stinger': { maxPower: 100 },
     'Fiery Dance': { maxPower: 130 },
     'Final Gambit': { maxPower: 100 },
@@ -4986,7 +4989,7 @@ var SV_PATCH = {
 };
 var SV = (0, util_1.extend)(true, {}, SS, SV_PATCH);
 exports.MOVES = [{}, RBY, GSC, ADV, DPP, BW, XY, SM, SS, SV];
-exports.HACK_MOVES = [{}, EK];
+exports.HACK_MOVES = [{}, EK, EK];
 var Moves = (function () {
     function Moves(gen) {
         this.gen = gen;
@@ -5097,6 +5100,7 @@ finally {
 exports.HACK_MOVES_BY_ID = [];
 var HACKGEN = [
     0,
+    3,
     3
 ];
 var game = 0;
@@ -5106,7 +5110,7 @@ try {
         var map = {};
         for (var move in moves) {
             var data = moves[move];
-            if ([1].includes(game)) {
+            if ([1, 2].includes(game)) {
                 var m = new Move(move, data, HACKGEN[game]);
                 map[m.id] = m;
             }
